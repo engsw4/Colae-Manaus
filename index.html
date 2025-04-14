@@ -5,26 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Colaê Manaus</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a2d0c5c9c9.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
-    <img src="./img/Logo.png">
+    <img src="./img/Logo.png" alt="Logo Colaê Manaus">
     <h1>Rolês imperdíveis. Colaê que é sucesso!</h1>
+    <button id="toggleDarkMode"><i class="fas fa-moon"></i> 🌙 ☀️</button>
   </header>
-  <div class="sub">
-  <b>Explore eventos culturais na capital da floresta!</b>
-</div>
+
+  <div class="sub"><b>Explore eventos e lugares incríveis na capital da floresta!</b></div>
+
   <nav>
-    <button onclick="filtrar('todos')">Todos</button>
-    <button onclick="filtrar('exposicao')">Exposições e Feiras</button>
-    <button onclick="filtrar('gratuito')">Eventos Gratuitos</button>
+    <button onclick="filtrar('todos')"><i class="fas fa-globe"></i> Todos</button>
+    <button onclick="filtrar('exposicao')"><i class="fas fa-palette"></i> Exposições</button>
+    <button onclick="filtrar('gratuito')"><i class="fas fa-leaf"></i> Gratuitos</button>
   </nav>
 
   <main>
-    <div id="eventList" class="event-list">
+    <section id="eventList" class="event-list">
       <!-- Eventos inseridos via JS -->
-    </div>
+    </section>
   </main>
+
   <footer>
     <p>© 2025 Eng. de Software - Viva a cultura amazônica 🌿</p>
   </footer>
