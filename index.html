@@ -7,12 +7,26 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/a2d0c5c9c9.js" crossorigin="anonymous"></script>
 </head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Colaê Manaus</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a2d0c5c9c9.js" crossorigin="anonymous"></script>
+</head>
 <body>
   <header>
     <img src="./img/Logo.png" alt="Logo Colaê Manaus">
     <h1>Rolês imperdíveis. Colaê que é sucesso!</h1>
     <button id="toggleDarkMode"><i class="fas fa-moon"></i> 🌙 ☀️</button>
   </header>
+
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Pesquisar eventos...">
+    <button id="searchButton">Pesquisar</button>
+  </div>
 
   <div class="sub"><b>Explore eventos e lugares incríveis na capital da floresta!</b></div>
 
@@ -34,4 +48,9 @@
 
   <script src="script.js"></script>
 </body>
+</div>
+<div id="eventModal" class="modal">
+  <!-- O conteúdo será inserido dinamicamente pelo JavaScript -->
+</div>
 </html>
+
