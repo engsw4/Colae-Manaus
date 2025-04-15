@@ -1,3 +1,14 @@
+document.getElementById("searchInput").addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+    const resultados = eventos.filter(e => 
+      e.title.toLowerCase().includes(searchTerm) || 
+      e.description.toLowerCase().includes(searchTerm)
+    );
+    exibirEventos(resultados);
+  }
+});
+
 const eventos = [
   {
     title: "Teatro Amazonas",
@@ -6,7 +17,8 @@ const eventos = [
     category: "exposicao",
     gratuito: false,
     description: "Um dos teatros mais bonitos do Brasil, símbolo cultural do estado.",
-    link: ""
+    link: "",
+    image: "img/teatro-amazonas.webp" // Caminho da imagem
   },
   {
     title: "Musa - Museu da Amazônia",
@@ -15,7 +27,8 @@ const eventos = [
     category: "exposicao",
     gratuito: false,
     description: "Trilhas, torre de observação e muita biodiversidade.",
-    link: ""
+    link: "",
+    image: "img/musa.jpg" // Caminho da imagem
   },
   {
     title: "Ponta Negra",
@@ -24,7 +37,8 @@ const eventos = [
     category: "gratuito",
     gratuito: true,
     description: "Praia urbana, ideal para passeios, fotos e eventos ao ar livre.",
-    link: ""
+    link: "",
+    image: "img/ponta-negra.jpg" // Caminho da imagem
   },
   {
     title: "Encontro das Águas",
@@ -127,6 +141,28 @@ const eventos = [
   }
 ];
 
+function abrirModal(evento) {
+  const modal = document.getElementById("eventModal");
+  modal.innerHTML = `
+    <div class="modal-content">
+      <span class="close-button" onclick="fecharModal()">&times;</span>
+      <img src="${evento.image}" alt="${evento.title}" class="modal-image" />
+      <h2>${evento.title}</h2>
+      <p><strong>🕒 Data e Hora:</strong> ${evento.date}</p>
+      <p><strong>📍 Local:</strong> ${evento.location}</p>
+      <p><strong>Descrição:</strong> ${evento.description}</p>
+      ${evento.link ? `<p><a href="${evento.link}" target="_blank">Mais informações</a></p>` : ""}
+      ${evento.gratuito ? `<p><strong style="color: green;">🌿 Evento Gratuito</strong></p>` : ""}
+    </div>
+  `;
+  modal.classList.add("open"); // Adiciona a classe para abrir o modal
+}
+
+function fecharModal() {
+  const modal = document.getElementById("eventModal");
+  modal.classList.remove("open"); // Remove a classe para fechar o modal
+}
+
 function exibirEventos(lista) {
   const container = document.getElementById("eventList");
   container.innerHTML = "";
@@ -134,6 +170,7 @@ function exibirEventos(lista) {
   lista.forEach(e => {
     const card = document.createElement("div");
     card.className = "event-card";
+    card.onclick = () => abrirModal(e); // Adiciona o evento de clique
 
     card.innerHTML = `
       <h3>${e.title}</h3>
@@ -173,3 +210,4 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("modoNoturno", modoAtual);
   });
 });
+
