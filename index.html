@@ -1,56 +1,299 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Colaê Manaus</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/a2d0c5c9c9.js" crossorigin="anonymous"></script>
-</head>
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Colaê Manaus</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://kit.fontawesome.com/a2d0c5c9c9.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Loja Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-header {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #e74c3c;
+        }
+        
+        .product-description {
+            padding: 20px;
+            color: #666;
+        }
+        
+        /* Carrossel */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 300px;
+        }
+        
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+        
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #bbb;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-dot.active {
+            background-color: #2c3e50;
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #2980b9;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #2c3e50;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <img src="./img/Logo.png" alt="Logo Colaê Manaus">
-    <h1>Rolês imperdíveis. Colaê que é sucesso!</h1>
-    <button id="toggleDarkMode"><i class="fas fa-moon"></i> 🌙 ☀️</button>
-  </header>
-
-  <div class="search-bar">
-    <input type="text" id="searchInput" placeholder="Pesquisar eventos...">
-    <button id="searchButton">Pesquisar</button>
-  </div>
-
-  <div class="sub"><b>Explore eventos e lugares incríveis na capital da floresta!</b></div>
-
-  <nav>
-    <button onclick="filtrar('todos')"><i class="fas fa-globe"></i> Todos</button>
-    <button onclick="filtrar('exposicao')"><i class="fas fa-palette"></i> Exposições</button>
-    <button onclick="filtrar('gratuito')"><i class="fas fa-leaf"></i> Gratuitos</button>
-  </nav>
-
-  <main>
-    <section id="eventList" class="event-list">
-      <!-- Eventos inseridos via JS -->
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2025 Eng. de Software - Viva a cultura amazônica 🌿</p>
-  </footer>
-
-  <script src="script.js"></script>
+    <header>
+        <h1>Minha Loja Online</h1>
+    </header>
+    
+    <div class="container">
+        <div class="products">
+            <!-- Produto 1 com carrossel -->
+            <div class="product">
+                <div class="carousel-container" id="carousel1">
+                    <div class="carousel">
+                        <img src="https://via.placeholder.com/600x400?text=Produto+1+Imagem+1" alt="Produto 1 Imagem 1">
+                        <img src="https://via.placeholder.com/600x400?text=Produto+1+Imagem+2" alt="Produto 1 Imagem 2">
+                        <img src="https://via.placeholder.com/600x400?text=Produto+1+Imagem+3" alt="Produto 1 Imagem 3">
+                        <img src="https://via.placeholder.com/600x400?text=Produto+1+Imagem+4" alt="Produto 1 Imagem 4">
+                    </div>
+                    <div class="carousel-nav" id="carousel1-nav">
+                        <div class="carousel-dot active"></div>
+                        <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
+                        <div class="carousel-dot"></div>
+                    </div>
+                </div>
+                
+                <div class="product-header">
+                    <h2 class="product-title">Smartphone Premium</h2>
+                    <div class="product-price">R$ 2.499,99</div>
+                </div>
+                
+                <div class="product-description">
+                    <p>O smartphone mais avançado do mercado com câmera de 108MP, processador ultrarrápido e tela AMOLED de 6.7 polegadas.</p>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            
+            <!-- Produto 2 básico -->
+            <div class="product">
+                <img src="https://via.placeholder.com/600x400?text=Produto+2" alt="Produto 2" style="width: 100%; height: 300px; object-fit: cover;">
+                
+                <div class="product-header">
+                    <h2 class="product-title">Fone de Ouvido Bluetooth</h2>
+                    <div class="product-price">R$ 299,99</div>
+                </div>
+                
+                <div class="product-description">
+                    <p>Fone de ouvido sem fio com cancelamento de ruído e bateria que dura até 30 horas.</p>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Minha Loja Online. Todos os direitos reservados.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configuração do carrossel para o Produto 1
+            const carousel = document.querySelector('#carousel1 .carousel');
+            const dots = document.querySelectorAll('#carousel1-nav .carousel-dot');
+            const images = document.querySelectorAll('#carousel1 .carousel img');
+            let currentIndex = 0;
+            let startX = 0;
+            let isDragging = false;
+            
+            // Configura a largura do carrossel baseada no número de imagens
+            carousel.style.width = `${images.length * 100}%`;
+            
+            // Função para atualizar a posição do carrossel
+            function updateCarousel() {
+                const itemWidth = 100 / images.length;
+                carousel.style.transform = `translateX(-${currentIndex * itemWidth}%)`;
+                
+                // Atualiza os dots de navegação
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
+            
+            // Navegação pelos dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Eventos de toque/arrastar para mobile
+            carousel.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                isDragging = true;
+            });
+            
+            carousel.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                const x = e.touches[0].clientX;
+                const diff = startX - x;
+                
+                if (Math.abs(diff) > 50) {
+                    isDragging = false;
+                    if (diff > 0 && currentIndex < images.length - 1) {
+                        currentIndex++;
+                    } else if (diff < 0 && currentIndex > 0) {
+                        currentIndex--;
+                    }
+                    updateCarousel();
+                }
+            });
+            
+            // Eventos de mouse para desktop
+            carousel.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                isDragging = true;
+                e.preventDefault(); // Evita seleção de texto durante o arrasto
+            });
+            
+            carousel.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                const x = e.clientX;
+                const diff = startX - x;
+                
+                if (Math.abs(diff) > 50) {
+                    isDragging = false;
+                    if (diff > 0 && currentIndex < images.length - 1) {
+                        currentIndex++;
+                    } else if (diff < 0 && currentIndex > 0) {
+                        currentIndex--;
+                    }
+                    updateCarousel();
+                }
+            });
+            
+            carousel.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                isDragging = false;
+            });
+            
+            // Botão de adicionar ao carrinho
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const product = button.closest('.product');
+                    const productName = product.querySelector('.product-title').textContent;
+                    const productPrice = product.querySelector('.product-price').textContent;
+                    
+                    alert(`${productName} adicionado ao carrinho!\nPreço: ${productPrice}`);
+                });
+            });
+        });
+    </script>
 </body>
-</div>
-<div id="eventModal" class="modal">
-  <!-- O conteúdo será inserido dinamicamente pelo JavaScript -->
-</div>
 </html>
-
